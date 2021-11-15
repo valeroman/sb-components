@@ -42,3 +42,10 @@ CustonFontColor.args = {
     fontColor: '#5517ac',
     size: 'h1'
 }
+
+export const CustonBackgroundColor = Template.bind({});
+CustonBackgroundColor.args = {
+    fontColor: '#eeeeee',
+    size: 'h1',
+    backgroundColor: '#000000'
+}
