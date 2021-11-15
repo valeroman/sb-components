@@ -69,4 +69,8 @@ Si da algun error relacionado con css, hacer la siguiente configuracion:
     ir a https://www.netlify.com/
 
     Github y Github Pages
-    
+
+    ingnorar del archivo .gitignore
+        /storybook-static
+
+    renombrar la carpeta storybook-static a docs
