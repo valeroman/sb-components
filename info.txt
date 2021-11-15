@@ -74,3 +74,25 @@ Si da algun error relacionado con css, hacer la siguiente configuracion:
         /storybook-static
 
     renombrar la carpeta storybook-static a docs
+
+
+#-- Limpiar y copiar archivos al dist --#
+    https://www.npmjs.com/package/rimraf
+        => yarn add -D rimraf
+
+    https://www.npmjs.com/package/copyfiles
+        => 
+        
+
+#-- Semantic Versioning Automiatico --#
+    https://www.npmjs.com/package/semantic-release
+        => yarn add -D semantic-release
+
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        "@semantic-release/changelog",
+        "@semantic-release/github",
+        "@semantic-release/npm",
+        "@semantic-release/git"
+    ],
