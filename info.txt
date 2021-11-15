@@ -1,0 +1,72 @@
+#--PROYECTO PARA CREACION DE COMPONENTES CON STORYBOOK#--#
+
+Eliminar los scripts de react
+    => yarn remove react-scripts
+
+Borrar la carpeta publica
+
+En la carpeta src solo dejamos el index.tsx, los demas archivos los eliminamos
+
+Instalar storybook
+    => npx sb init
+
+Modificar el package.json
+    asi deberia de quedar:
+    "scripts": {
+        "start": "start-storybook -p 6006",
+        "build": "build-storybook",
+        "storybook": "start-storybook -p 6006",
+        "build-storybook": "build-storybook"
+    },
+
+Borramos todo el contenido de index.tsx e importamos un Button como ejemplo 
+    => export { Button } from "./stories/Button";
+
+corremos el comando => yarn start
+
+Si da algun error relacionado con css, hacer la siguiente configuracion:
+    instalamos estas librerias 
+         => yarn add -D @storybook/addon-postcss postcss css-loader
+
+    abrimos el archivo .storybook/main.js y agregamos lo siguiente:
+  
+        {
+            name: "@storybook/addon-postcss",
+            options: {
+                postcssLoaderOptions: {
+                    implementation: require('postcss'),
+                },
+            },
+        },
+
+    creamos el archivo en la raiz postcss.config.js y colocamos el siguente codigo:
+     https://www.npmjs.com/package/@storybook/addon-postcss
+
+        module.exports = {
+            // Add your installed PostCSS plugins here:
+            plugins: [
+                // require('autoprefixer'),
+                // require('postcss-color-rebeccapurple'),
+            ],
+        };
+    
+#-- Desplegar Storybook a Servidores-- #
+
+1 - Generar la version de distribucion
+
+    ejecutar el
+        => yarn build
+    se crea la carpeta  => storybook-static
+
+    instalamos http-server
+     doc => https://www.npmjs.com/package/http-server
+     sudo npm install --global http-server
+
+    cd storybook-static
+     ejecutar el comando
+        => http-server -o
+
+    ir a https://www.netlify.com/
+
+    Github y Github Pages
+    
