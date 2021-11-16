@@ -96,3 +96,45 @@ Si da algun error relacionado con css, hacer la siguiente configuracion:
         "@semantic-release/npm",
         "@semantic-release/git"
     ],
+    #-- Token de acceso --#    
+
+    Ir a github -> click en perfil => buscar settings => Developer settings => Personal access tokens => clieck en Generate new token
+
+    Ir a npmjs -> click en perfil => Access Token => Generate New Token => Publish => Generate Token
+
+    Ir a github -> click en settins en nuestro repositorio => Secrets => New repository secret => agregar nombre a las nuevas variables de entorno
+        => GH_TOKEN
+        => token
+
+        => NPM_TOKEN
+        => token
+
+    en github en mi repositorio -> click en Actions -> click en set up a workflow yourself => Start commit
+        => main.yml - Github actions creadoc
+    => Commit new file
+
+    Ir a vs code y hacer un git pull => para traer todos los cambios que se encuentra en mi repositorio => me trae mi .github/workflow
+    => abro mi archivo main.yml => hacer las siguientes modificaciones
+        => name: Semantic Release
+        => borrar workflow_dispatch:
+        => agregar una nueva tares despues de - uses: actions/checkout@v2
+           - name: Setup Node.js
+             uses: actions/setup-node@v1
+             with:
+               node-version: 14.17
+
+        => borrar la tarea del hello wordl
+        => agregaos la instalacion de dependencias
+            - name: Install Dependencies
+              run: yarn install
+
+            - name: Build App
+              run: yarn build
+
+            - name: Semantic Release
+              env:
+                GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+                NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+              run: npx semantic-release
+        
+        => borrar el -name: Run a multi-line script
