@@ -8,4 +8,4 @@ Paquete de practica de React Componentes + Storybook + NPM Publish
 ```
 
 ### Demo:
-[Storybook Components] (https://valeroman.github.io/sb-components/?path=/story/example-introduction--page)
+[Storybook Components](https://valeroman.github.io/sb-components/?path=/story/example-introduction--page)
